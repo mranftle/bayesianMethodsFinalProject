@@ -59,17 +59,17 @@ Kxs = covSEiso(theta.cov, x', x_star');
 % K(X_*, K_*)
 Kss = covSEiso(theta.cov, x_star');
 
-% disp(size(Kxx));
-% disp(size(Kxs));
-% disp(size(Kss));
+disp(size(Kxx));
+disp(size(Kxs));
+disp(size(Kss));
 
 % posterior distribution for y*
 posterior_mu = Kxs' / Kxx * test_total_updrs;
 posterior_K  = Kss - Kxs' / Kxx * Kxs;
 posterior_K  = (posterior_K + posterior_K') / 2;
-samples = mvnrnd(posterior_mu, posterior_K, num_samples);
+samples = mvnrnd(posterior_mu, posterior_K, num_samples)';
 
-% plot(samples)
+plot(samples)
 %
 %PLOT POSTERIOR SAMPLES HERE% 
 
