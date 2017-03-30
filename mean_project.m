@@ -1,4 +1,4 @@
-function [ ] = mean( )
+function [ ] = mean_project( )
 %PROJECT Summary of this function goes here
 %   Detailed explanation goes here
 % data parser 
@@ -45,15 +45,16 @@ mu_post1 = mu + sigma*phi'/(phi*sigma*phi'+s^2*eye(5288))*(training_total_updrs-
 sigma_post1 = sigma - sigma*phi'/(phi*sigma*phi'+s^2*eye(5288))*phi*sigma;
 mu_post_y = phi_star*mu_post1;
 sigma_post_y = phi_star * sigma_post1 * phi_star' + s^2 * eye(length(x_star));
-% 
+size(mu_post_y)
+size(test_total_updrs)
 % fprintf('Marginal log-likelihood for k = %i = %0.4f\n', ...
 %       k, ...
 %       log_mvnpdf(training_motor_updrs, ...
 %                  phi * mu, ...
 %                  phi * sigma * phi' + s^2 * eye(5288)));
-
+RMSE = sqrt(mean((mu_post_y - test_total_updrs).^2))
 figure
-mean = plot(mu_post_y);
+mean_ = plot(mu_post_y);
 hold on
 % observations = plot(x, y, 'x');
 % sigma = ...

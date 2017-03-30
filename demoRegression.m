@@ -5,8 +5,8 @@ fclose(data_file);
 % readcsv, split into training and test (5875,22)
 data = csvread('data/parkinsons_data.csv',1,0);
 num_samples = length(data);
-training_data = data(1:500,:);
-test_data = data(501,:);
+training_data = data(1:1000,:);
+test_data = data(1001:end,:);
 
 % get y labels 
 training_motor_updrs = training_data(:,5);
@@ -34,8 +34,8 @@ hyp2 = minimize(hyp, @gp, -100, @infGaussLik, meanfunc, covfunc, likfunc, x, y)
 [mu s2] = gp(hyp2, @infGaussLik, meanfunc, covfunc, likfunc, x, y, x_star);
 RMSE = sqrt(mean((mu - y_star).^2))
 
-mu
-y_star
+mu;
+y_star;
 % f = [mu+2*sqrt(s2); flipdim(mu-2*sqrt(s2),1)];
 % fill([xs; flipdim(xs,1)], f, [7 7 7]/8)
 % hold on; plot(x_star, mu); 
