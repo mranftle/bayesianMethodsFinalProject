@@ -5,7 +5,7 @@ fclose(data_file);
 % readcsv, split into training and test (5875,22)
 data = csvread('data/parkinsons_data.csv',1,0);
 num_samples = length(data);
-training_data = data(1:1000,:);
+training_data = data(1:500,:);
 test_data = data(1001:end,:);
 
 % get y labels 
@@ -18,20 +18,30 @@ y_star = test_data(:,6);
 x = training_data(:,7:end);
 x_star = test_data(:,7:end);
 
-
-% x = gpml_randn(0.8, 20, 10);              % 20 training inputs
-% y = sin(3*(sum(x,2))) + 0.1*gpml_randn(0.9, 20, 1);  % 20 noisy training targets
-% xs = linspace(-20, 20, 500)';                  % 61 test inputs 
-
+% training = csvread('numerai_datasets/numerai_training_data.csv',1,0);
+% x = training(1:1000, 1:50);
+% y = training(1:1000, 51);
+% x_star = training(1001:5000, 1:50);
+% y_star = training(1001:5000, 51);
+ 
+D = size(x,2);
+ell = 0; sf = 0;
 meanfunc = [];                    % empty: don't use a mean function
-covfunc = @covSEiso;              % Squared Exponental covariance function
+cgi = {'covSEiso'};  hypgi = log([ell;sf]);    % isotropic Gaussian
+cgu = {'covSEisoU'}; hypgu = log(ell);   % isotropic Gauss no scale
+cla = {'covLINard'}; L = rand(D,1); hypla = log(L);  % linear (ARD)
+cra = {'covRQard'}; al = 2; hypra = log([L;sf;al]); % ration. quad.
+cca = {'covPPiso',2}; hypcc = hypgi;% compact support poly degree 2
+
 likfunc = @likGauss;              % Gaussian likelihood
 
 hyp = struct('mean', [], 'cov', [0 0], 'lik', -1);
 
-hyp2 = minimize(hyp, @gp, -100, @infGaussLik, meanfunc, covfunc, likfunc, x, y)
+hyp2 = minimize(hyp, @gp, -100, @infGaussLik, meanfunc, cgi, likfunc, x, y)
 
-[mu s2] = gp(hyp2, @infGaussLik, meanfunc, covfunc, likfunc, x, y, x_star);
+% nlml = gp(hyp, @infGaussLik, meanfunc, cgi, likfunc, x, y)
+
+[mu s2] = gp(hyp2, @infGaussLik, meanfunc, cgi, likfunc, x, y, x_star);
 RMSE = sqrt(mean((mu - y_star).^2))
 
 mu;
