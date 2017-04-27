@@ -37,12 +37,12 @@ likfunc = @likGauss;              % Gaussian likelihood
 
 hyp = struct('mean', [], 'cov', [0 0], 'lik', -1);
 
-hyp2 = minimize(hyp, @gp, -100, @infGaussLik, meanfunc, cgi, likfunc, x, y)
+hyp2 = minimize(hyp, @gp, -100, @infGaussLik, meanfunc, cgi, likfunc, x, y);
 
 % nlml = gp(hyp, @infGaussLik, meanfunc, cgi, likfunc, x, y)
 
 [mu s2] = gp(hyp2, @infGaussLik, meanfunc, cgi, likfunc, x, y, x_star);
-RMSE = sqrt(mean((mu - y_star).^2))
+RMSE = sqrt(mean((mu - y_star).^2));
 
 mu;
 y_star;
