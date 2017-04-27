@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32eebb18-ade6-4ff3-ba6c-74cc447b4282" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/parkinsons_classification.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parkinsons.py" afterPath="$PROJECT_DIR$/parkinsons.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parkinsons_classification.py" afterPath="$PROJECT_DIR$/parkinsons_classification.py" />
     </list>
     <ignored path="finalProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,11 +24,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="parkinsons_classification.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="parkinsons_classification.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/parkinsons_classification.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-110">
-              <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
+            <state relative-caret-position="195">
+              <caret line="13" column="47" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="47" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -67,11 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="parkinsons.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="parkinsons.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/parkinsons.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="48" column="44" selection-start-line="48" selection-start-column="44" selection-end-line="48" selection-end-column="44" />
+            <state relative-caret-position="270">
+              <caret line="51" column="26" selection-start-line="51" selection-start-column="26" selection-end-line="51" selection-end-column="26" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -95,8 +94,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/data/parkinsons_data_classification.csv" />
-        <option value="$PROJECT_DIR$/parkinsons_classification.py" />
         <option value="$PROJECT_DIR$/parkinsons.py" />
+        <option value="$PROJECT_DIR$/parkinsons_classification.py" />
       </list>
     </option>
   </component>
@@ -174,7 +173,7 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager" selected="Python.parkinsons">
+  <component name="RunManager" selected="Python.parkinsons_classification">
     <configuration default="false" name="parkinsons" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -349,8 +348,8 @@
     </list>
     <recent_temporary>
       <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Python.parkinsons" />
-        <item index="1" class="java.lang.String" itemvalue="Python.parkinsons_classification" />
+        <item index="0" class="java.lang.String" itemvalue="Python.parkinsons_classification" />
+        <item index="1" class="java.lang.String" itemvalue="Python.parkinsons" />
       </list>
     </recent_temporary>
   </component>
@@ -422,22 +421,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parkinsons_classification.py">
+    <entry file="file://$PROJECT_DIR$/parkinsons.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-110">
-          <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
+        <state relative-caret-position="270">
+          <caret line="51" column="26" selection-start-line="51" selection-start-column="26" selection-end-line="51" selection-end-column="26" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parkinsons.py">
+    <entry file="file://$PROJECT_DIR$/parkinsons_classification.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="48" column="44" selection-start-line="48" selection-start-column="44" selection-end-line="48" selection-end-column="44" />
+        <state relative-caret-position="195">
+          <caret line="13" column="47" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="47" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
