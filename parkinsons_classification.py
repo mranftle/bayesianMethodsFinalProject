@@ -20,7 +20,17 @@ y = np.array(train['status'], ndmin=2).transpose()
 y_star = np.array(test['status'], ndmin=2).transpose()
 test = test.drop('status',axis=1)
 
+# define kernels here
 k = GPy.kern.RBF(1, variance=7., lengthscale=0.2)
+kernel1 =  GPy.kern.Linear(input_dim =16, variances=1)
+kernel2 = GPy.kern.RBF(input_dim =16, variance=1., lengthscale=1.)
+kernel3 = GPy.kern.Poly(input_dim=16, variance=1, scale=1)
+kernel4 = GPy.kern.Matern32(input_dim=16, variance=1)
+kernel5 = GPy.kern.RatQuad(input_dim=16, variance=1)
+kernel6 = GPy.kern.White(input_dim=16)
+
+# k = linear kernel combinations 
+
 X = X.as_matrix()
 test = test.as_matrix()
 gp = GPy.models.GPClassification(X,y)
