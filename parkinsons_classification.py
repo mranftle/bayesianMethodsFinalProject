@@ -11,7 +11,7 @@ data1 = data1.drop('RPDE',axis=1)
 
 data1['name'] = data1['name'].apply(lambda x: int(str(x).split('_')[2][1:]))
 train = data1.loc[data1['name'] <=32].sample(n=100)
-test = data1.loc[data1['name'] > 32].sample(n=10)
+test = data1.loc[data1['name'] > 32].sample(n=50)
 X = train.drop('name',axis=1)
 X = X.drop('status', axis=1)
 test = test.drop('name',axis=1)
@@ -29,11 +29,11 @@ kernel4 = GPy.kern.Matern32(input_dim=16, variance=1)
 kernel5 = GPy.kern.RatQuad(input_dim=16, variance=1)
 kernel6 = GPy.kern.White(input_dim=16)
 
-# k = linear kernel combinations 
+# k = linear kernel combinations
 
 X = X.as_matrix()
 test = test.as_matrix()
-gp = GPy.models.GPClassification(X,y)
+gp = GPy.models.GPClassification(X,y, kernel=k)
 gp.optimize(messages=True)
 mean, var = gp.predict(test)
 

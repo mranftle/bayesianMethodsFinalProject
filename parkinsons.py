@@ -7,6 +7,7 @@ from sklearn.metrics import mean_squared_error
 from sklearn import gaussian_process
 from sklearn.gaussian_process.kernels import Matern, WhiteKernel, ConstantKernel, RationalQuadratic
 from sklearn.linear_model import BayesianRidge
+from sklearn.neural_network import MLPClassifier
 import plotly.plotly as py
 import plotly.graph_objs as go
 import GPy
@@ -37,22 +38,24 @@ test = test.drop('subject#', axis=1)
 test = test.as_matrix()
 
 print y_total.shape
-# kernel1 = GPy.kern.Linear(input_dim=16) GPy.kern.RBF(input_dim =16, variance=1., lengthscale=1.)
-kernel1 =  GPy.kern.Linear(input_dim =16, variances=1)
-kernel2 = GPy.kern.RBF(input_dim =16, variance=1., lengthscale=1.)
-kernel3 = GPy.kern.Poly(input_dim=16, variance=1, scale=1)
-kernel4 = GPy.kern.Matern32(input_dim=16, variance=1)
-kernel5 = GPy.kern.RatQuad(input_dim=16, variance=1)
-kernel6 = GPy.kern.White(input_dim=16)
-# kernel = kernel5 + (kernel4*kernel2)
-# kernel = kernel2 + (kernel6*kernel4)
-kernel = kernel4 + kernel5 + kernel2*kernel1
-m = GPy.models.GPRegression(X,y_total, kernel)
-m.optimize(messages=True, optimizer='lbfgs') #lbfgs
-mean,var = m.predict(test)
-print mean_squared_error(labels_total, mean)
+# # kernel1 = GPy.kern.Linear(input_dim=16) GPy.kern.RBF(input_dim =16, variance=1., lengthscale=1.)
+# kernel1 =  GPy.kern.Linear(input_dim =16, variances=1)
+# kernel2 = GPy.kern.RBF(input_dim =16, variance=1., lengthscale=1.)
+# kernel3 = GPy.kern.Poly(input_dim=16, variance=1, scale=1)
+# kernel4 = GPy.kern.Matern32(input_dim=16, variance=1)
+# kernel5 = GPy.kern.RatQuad(input_dim=16, variance=1)
+# kernel6 = GPy.kern.White(input_dim=16)
+# # kernel = kernel5 + (kernel4*kernel2)
+# # kernel = kernel2 + (kernel6*kernel4)
+# kernel = kernel4 + kernel1 + (kernel5 * kernel2)
+# m = GPy.models.GPRegression(X,y_total, kernel)
+# m.optimize(messages=True, optimizer='lbfgs') #lbfgs
+# mean,var = m.predict(test)
+# print mean_squared_error(labels_total, mean)
 
-
+clf = MLPClassifier(solver='lbfgs', alpha=1e-5,hidden_layer_sizes=(5, 2), random_state=1)
+clf.fit(X, y_total.ravel())
+clf.predict(test)
 # print "Gaussian Process Total"
 # kernel = ConstantKernel() + Matern(length_scale=2, nu=3/2) + WhiteKernel(noise_level=1) + RationalQuadratic(length_scale=1)
 # # kernel = 26.4**2 + Matern(length_scale=1e-05, nu=1) + WhiteKernel(noise_level=103)
